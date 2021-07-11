@@ -1,10 +1,12 @@
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiZGV2aWw5NDMxIiwiYSI6ImNrcnRwaGxyMzNpcXcydXJ2M2h0Z3luY3YifQ.l2I6lmIZCPj-Pk7tCDXUYA' //ENTER YOUR ACCESS TOKEN HERE
-}).addTo(mymap);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+       
+    }).addTo(mymap);
+
+
+
+  
+
 
 mapMarkers1 = [];
 mapMarkers2 = [];
@@ -21,10 +23,9 @@ source.addEventListener('message', function(e){
     for (var i = 0; i < mapMarkers1.length; i++) {
       mymap.removeLayer(mapMarkers1[i]);
     }
-    marker1 = L.marker([obj.latitude, obj.longitude]).addTo(mymap);
+    marker1 = L.marker([obj.latitude, obj.longitude]).addTo(mymap).openPopup();
     mapMarkers1.push(marker1);
   }
-
   if(obj.busline == '00002') {
     for (var i = 0; i < mapMarkers2.length; i++) {
       mymap.removeLayer(mapMarkers2[i]);
@@ -39,5 +40,6 @@ source.addEventListener('message', function(e){
     }
     marker3 = L.marker([obj.latitude, obj.longitude]).addTo(mymap);
     mapMarkers3.push(marker3);
+
   }
 }, false);
