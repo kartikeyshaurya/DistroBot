@@ -15,7 +15,7 @@ Content
 ## Setup 
 
 
-* First we need to start the  `apachhe zookeeper` by using this command(make sure your terminal to kafka location )
+* First we need to start the  `apache zookeeper` by using this command(make sure your terminal to kafka location )
 
 ```
 $ bin/kafka-server-start.sh config/zookeeper.properties 
